@@ -171,6 +171,14 @@ vim.o.confirm = true
 --  See `:help hlsearch`
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
+if vim.g.neovide then
+  vim.g.neovide_input_use_logo = 1
+  -- Paste from clipboard in Insert and Command-line mode
+  vim.keymap.set({'i', 'c'}, '<D-v>', '<C-R>+')
+  -- Paste from clipboard in Terminal mode
+  vim.keymap.set('t', '<D-v>', '<C-R>+')
+end
+
 -- Diagnostic Config & Keymaps
 -- See :help vim.diagnostic.Opts
 vim.diagnostic.config {
