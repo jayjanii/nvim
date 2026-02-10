@@ -172,9 +172,10 @@ vim.o.confirm = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 if vim.g.neovide then
+  vim.opt.guifont = 'JetBrains Mono NL:h14:b'
   vim.g.neovide_input_use_logo = 1
   -- Paste from clipboard in Insert and Command-line mode
-  vim.keymap.set({'i', 'c'}, '<D-v>', '<C-R>+')
+  vim.keymap.set({ 'i', 'c' }, '<D-v>', '<C-R>+')
   -- Paste from clipboard in Terminal mode
   vim.keymap.set('t', '<D-v>', '<C-R>+')
 end
