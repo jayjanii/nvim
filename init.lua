@@ -147,8 +147,10 @@ vim.o.splitbelow = true
 --  It is very similar to `vim.o` but offers an interface for conveniently interacting with tables.
 --   See `:help lua-options`
 --   and `:help lua-guide-options`
-vim.o.list = true
+-- vim.o.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
 
 -- Preview substitutions live, as you type!
 vim.o.inccommand = 'split'
@@ -172,7 +174,7 @@ vim.o.confirm = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 if vim.g.neovide then
-  vim.opt.guifont = 'JetBrains Mono NL:h14:b'
+  vim.opt.guifont = 'JetBrainsMonoNL Nerd Font:h14:b'
   vim.g.neovide_input_use_logo = 1
   -- Paste from clipboard in Insert and Command-line mode
   vim.keymap.set({ 'i', 'c' }, '<D-v>', '<C-R>+')
@@ -889,7 +891,7 @@ require('lazy').setup({
   --  Uncomment any of the lines below to enable them (you will need to restart nvim).
   --
   -- require 'kickstart.plugins.debug',
-  -- require 'kickstart.plugins.indent_line',
+  require 'kickstart.plugins.indent_line',
   -- require 'kickstart.plugins.lint',
   require 'kickstart.plugins.autopairs',
   require 'kickstart.plugins.neo-tree',
