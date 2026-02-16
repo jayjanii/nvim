@@ -223,6 +223,8 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+vim.keymap.set('i', '<Esc>', '<Nop>')
+
 -- NOTE: Some terminals have colliding keymaps or are not able to send distinct keycodes
 -- vim.keymap.set("n", "<C-S-h>", "<C-w>H", { desc = "Move window to the left" })
 -- vim.keymap.set("n", "<C-S-l>", "<C-w>L", { desc = "Move window to the right" })
@@ -294,6 +296,24 @@ require('lazy').setup({
         topdelete = { text = '‾' },
         changedelete = { text = '~' },
       },
+    },
+  },
+
+  {
+    'folke/persistence.nvim',
+    event = 'BufReadPre', -- this will only start session saving when you open a file
+    opts = {
+      -- add any custom options here
+    },
+    keys = {
+      -- load the session for the current directory
+      { '<leader>qs', function() require('persistence').load() end, desc = 'Restore Session' },
+      -- select a session to load
+      { '<leader>qS', function() require('persistence').select() end, desc = 'Select Session' },
+      -- load the last session
+      { '<leader>ql', function() require('persistence').load { last = true } end, desc = 'Restore Last Session' },
+      -- stop Persistence => session won't be saved on exit
+      { '<leader>qd', function() require('persistence').stop() end, desc = "Don't Save Current Session" },
     },
   },
 
